@@ -12,5 +12,5 @@ Currently, only JPEGs are supported.
 
 ## Screenshot
 
-![img]( ./demo/screenshot_android_firefoxNightly_privateMode.jpg )
+<img src="./demo/screenshot_android_firefoxNightly_privateMode.jpg" height="500" />
 See? This also works on phones!
