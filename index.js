@@ -159,17 +159,16 @@ const createEditor = (file) => {
 				context.strokeText(tsTextInput.value, w - padding, h - padding, w - em);
 				context.fillText(tsTextInput.value, w - padding, h - padding, w - em);
 			}
-			draw();
 
 			// generateDownload
 			const generateDownload = () => {
 				downloadA.href = outputCanvas.toDataURL("image/jpeg");
 			}
-			generateDownload();
+			draw().then(generateDownload);
 
 			// once the details changed, redraw
 			[...details.children].forEach(
-				e => e.addEventListener("change", () => { draw(); generateDownload(); })
+				e => e.addEventListener("change", () => draw().then(generateDownload))
 			);
 		});
 
