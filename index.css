@@ -34,15 +34,11 @@ html {
 	font-family: "Sarasa Mono TC", "Sarasa Mono J";
 }
 
-html::before {
-	content: "";
-	font-family: "Sarasa Mono Slab TC", "Sarasa Mono Slab J"; 
-		/* this tries to force font being loaded earlier */
-}
-
 #waitWhileLoading {
 	background-color: var(--accent);
 	color: var(--color-on-accent);
+	font-family: "Sarasa Mono Slab TC", "Sarasa Mono Slab J", "Sarasa Mono TC", "Sarasa Mono J"; 
+		/* this tries to force font being loaded earlier */
 }
 
 #editors {
