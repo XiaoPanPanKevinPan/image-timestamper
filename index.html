@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Image Time Stamper</title>
+		<style>
+			@import "./general.css";
+			@import "./index.css";
+		</style>
+		<script src="https://cdn.jsdelivr.net/npm/exif-js"></script>
+		<!-- 
+			Name: exif.js
+			Source: https://github.com/exif-js/exif-js/
+			License: MIT License (~= Public Domain)
+		-->
+		<script src="./index.js" type="module" defer></script>
+		<script>
+			addEventListener("load", e => {
+				document.querySelector("#waitWhileLoading").remove();
+			});
+		</script>
+	</head>
+	<body class="padding gap" style="display: flex; flex-flow: column nowrap;">
+		<section aria-label="webapp description">
+			<h1>Image Timestamper</h1>
+			<p>A simple tool for adding timestamps to images in batches. The times are determined by extracting EXIF info from the files.</p>
+			<p>Currently, only JPEGs are supported.</p>
+			<p id="waitWhileLoading" class="flex">
+				Please wait while the app loading...
+				<noscript>This app requires JavaScript.</noscript>
+			</p>
+		</section>
+		<label for="source" class="button" style="min-height: 6em; font-size: 1.5em;">
+			<div class="flexVert" style="max-width: 100%; max-height: 100%;">
+				Select or Drag &amp; Drop Here
+				<input id="source" type="file" multiple="" style="max-width: 100%; font-size: 1rem;" />
+			</div>
+		</label>
+		<section id="controlPanel" class="gap" style="display: flex;">
+			<button class="mainBtn" id="downloadAll">Download All</button>
+			<button id="clearAll">Clear All</button>
+		</section>
+		<section id="editors" class="flexVert fill gap"></section>
+	</body>
+</html>	

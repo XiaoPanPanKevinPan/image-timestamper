@@ -1,0 +1,91 @@
+@font-face {
+	font-family: "Sarasa Mono TC";
+	src:
+		local("Sarasa Mono TC"),
+		url("./fonts/sarasa-mono-tc-regular.woff2"),
+		url("./fonts/sarasa-mono-tc-regular.ttf")
+}
+
+@font-face {
+	font-family: "Sarasa Mono J";
+	src:
+		local("Sarasa Mono J"),
+		url("./fonts/sarasa-mono-j-regular.woff2"),
+		url("./fonts/sarasa-mono-j-regular.ttf")
+}
+
+@font-face {
+	font-family: "Sarasa Mono Slab TC";
+	src:
+		local("Sarasa Mono Slab TC"),
+		url("./fonts/sarasa-mono-slab-tc-regular.woff2"),
+		url("./fonts/sarasa-mono-slab-tc-regular.ttf")
+}
+
+@font-face {
+	font-family: "Sarasa Mono Slab J";
+	src:
+		local("Sarasa Mono Slab J"),
+		url("./fonts/sarasa-mono-slab-j-regular.woff2"),
+		url("./fonts/sarasa-mono-slab-j-regular.ttf")
+}
+
+html {
+	font-family: "Sarasa Mono TC", "Sarasa Mono J";
+}
+
+html::before {
+	content: "";
+	font-family: "Sarasa Mono Slab TC", "Sarasa Mono Slab J"; 
+		/* this tries to force font being loaded earlier */
+}
+
+#waitWhileLoading {
+	background-color: var(--accent);
+	color: var(--color-on-accent);
+}
+
+#editors {
+	gap: var(--gap);
+	justify-content: space-evenly;
+}
+
+.editor {
+	width: 100%;
+	border: var(--border);
+}
+
+.editor .filename {
+	padding: var(--gap);
+	align-items: center;
+	justify-content: center;
+	border-bottom: var(--border);
+}
+
+.editor .canvasContainer {
+	display: flex;
+	justify-content: center;
+}
+
+.editor canvas {
+	max-width: 100%;
+	max-height: 60vh;
+}
+
+.editor .details > * {
+	display: flex;
+	align-items: center; /* to vertically align to center*/
+	gap: var(--gap);
+}
+
+.editor .details > *:nth-child(1) {
+	flex: 2;
+}
+
+.editor .details > *:is(:nth-child(2), :nth-child(3)) {
+	flex: 1;
+}
+
+.editor .details > * > *:nth-child(2) {
+	flex: 1;
+}

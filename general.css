@@ -1,0 +1,248 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap');
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	--accent: hsl(96, 100%, 40%);
+	--accent-clear: hsl(96, 100%, 55%);
+	--accent-dim: hsl(96, 100%, 30%);
+
+	--alert: hsl(0, 100%, 40%);
+	--alert-clear: hsl(0, 100%, 50%);
+	--alert-dim: hsl(0, 100%, 30%);
+
+	--bg-color: hsl(260, 100%, 7.5%);
+	--bg-color-clear: hsl(260, 100%, 15%);
+	--bg-color-dim: hsl(260, 100%, 0%);
+
+	--color: hsl(0, 0%, 90%);
+	--color-dim: hsl(0, 0%, 60%);
+	--color-clear: hsl(0, 0%, 100%);
+	--color-on-accent: black;
+	/*--color-on-accent-dim: grey;
+	--color-on-accent-clear: white;*/
+
+	--line-width: 2px;
+	--line-width-clear: 5px;
+	--gap: .5rem;
+	--duration: .25s;
+
+	--glow-and-shadow-no: 0 0 0 transparent;
+	--glow-and-shadow: 0 0 10px var(--accent);
+	--glow-and-shadow-dim: 0 0 8px var(--accent-dim);
+	
+	--border: solid var(--line-width) var(--accent); 
+	--border-no: solid var(--line-width) transparent;
+	--border-clear: solid var(--line-width) var(--accent-clear);
+	--border-dim: solid var(--line-width) var(--accent-dim);
+
+	--outline-on-focus: dashed var(--line-width) var(--accent-clear);
+	--outline-offset: 0;
+}
+
+.padding {
+	padding: var(--gap);
+}
+
+.margin {
+	margin: var(--gap);
+}
+
+.gap {
+	gap: var(--gap);
+}
+
+.flex {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: center;
+	align-items: center;
+}
+
+.flexVert {
+	display: flex;
+	flex-flow: column wrap;
+	justify-content: center;
+	align-items: center;
+}
+
+:is(.flex, .flexVert).noWrap {
+	flex-wrap: nowrap;
+}
+
+:is(.flex, .flexVert).fill{
+	align-items: stretch;
+}
+
+.flex > *, .flexVert > * {
+	flex: 1;
+}
+
+html {
+	font-size: 16px;
+	line-height: 1.5;
+	font-family: "Noto Sans TC", sans-serif;
+}
+
+*:focus-visible {
+	outline: var(--outline-on-focus);
+	outline-offset: var(--outline-offset);
+}
+
+body {
+	background-color: var(--bg-color);
+	color: var(--color);
+
+	height: 100vh;
+	margin: 0;
+}
+
+a {
+	color: var(--accent);
+	text-decoration: none;
+
+	border-bottom: solid var(--line-width) var(--accent-dim);
+
+	transition: color var(--duration), border var(--duration);
+}
+
+a:visited {
+	color: var(--accent-dim);
+}
+
+a:is(:hover, :focus-within) {
+	color: var(--accent-clear);
+	border-bottom: solid var(--line-width-clear) var(--accent);
+}
+
+a:active {
+	color: var(--accent-dim);
+	border-bottom: solid var(--line-width-clear) var(--accent-dim);
+}
+
+a.button:visited {
+	/* remove the effect for a:visited */
+	color: var(--accent);
+}
+
+:is(button, .button):is(*, :focus-within) {
+	/* :focus-within here to remove the effect of a:focus-within*/
+
+	background-color: var(--bg-color);
+	color: var(--accent);
+	border: solid var(--line-width) var(--accent);
+	box-shadow: var(--glow-and-shadow-no);
+
+	transition: color var(--duration), border var(--duration), box-shadow var(--duration);
+
+	font-size: inherit;
+	line-height: inherit;
+	padding: 0.5em;
+
+	/* to center the text */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+:is(button, .button):hover {
+	color: var(--accent-clear);
+	border: solid var(--line-width) var(--accent-clear);
+	box-shadow: var(--glow-and-shadow);
+}
+
+:is(button, .button):active {
+	color: var(--accent-dim);
+	border: solid var(--line-width) var(--accent-dim);
+	box-shadow: var(--glow-and-shadow-dim);
+}
+
+:is(button, .button):is(.mainBtn, :checked) {
+	background-color: var(--accent);
+	color: var(--color-on-accent);
+
+	transition: color var(--duration), border var(--duration), box-shadow var(--duration), background-color var(--duration);
+}
+
+:is(button, .button):is(.mainBtn, :checked):hover {
+	background-color: var(--accent-clear);
+	color: var(--color-on-accent);
+}
+
+:is(button, .button):is(.mainBtn, :checked):active {
+	background-color: var(--accent-dim);
+	color: var(--color-on-accent);
+}
+
+input {
+	font-size: inherit;
+}
+
+textarea {
+	color: var(--color);
+	background-color: var(--bg-color);
+	font-size: inherit;
+
+	border: solid var(--line-width) var(--accent);
+	box-shadow: var(--glow-and-shadow-no);
+
+	transition: border var(--duration), box-shadow var(--duration), background-color var(--duration);
+}
+
+textarea:focus-within {
+	outline: none;
+
+	background-color: var(--bg-color-clear);
+	border: solid var(--line-width) var(--accent-clear);
+	box-shadow: var(--glow-and-shadow);
+}
+
+dialog {
+	color: var(--color);
+	background-color: var(--bg-color);
+	border: var(--border-dim);
+	padding: 0;
+
+	max-width: calc(100vw - 2 * 2 * var(--gap));
+	max-height: calc(100vh - 2 * 2 * var(--gap));
+}
+
+dialog:is(.largest, .fullWidth, .fullHeight, .fullViewport){
+	width: 100vw;
+	height: 100vh;
+}
+
+dialog:is(.fullWidth, .fullViewport) {
+	max-width: 100vw;
+}
+
+dialog:is(.fullHeight, .fullViewport){
+	max-height: 100vh;
+}
+
+dialog::backdrop {
+		background-color: rgb(0 0 0 / 50%);
+}
+
+@supports (backdrop-filter: blur(.125rem)){
+	dialog::backdrop {
+		background-color: rgb(0 0 0 / 25%);
+		backdrop-filter: blur(.125rem);
+	}
+}
+
+
+input:is(:not([type]), [type="text"]) {
+	color: var(--accent);
+	background-color: transparent;
+	border: none;
+	border-bottom: solid var(--line-width) var(--accent);
+
+	transition: border var(--duration);
+}
+
+input:is(:not([type]), [type="text"]):is(:hover, :focus-within) {
+	border-bottom: solid var(--line-width) var(--accent-clear);
+}
